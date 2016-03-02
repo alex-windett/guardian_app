@@ -127,7 +127,18 @@
 	var formattedDate = year + '-' + month + '-' + day;
 	
 	var loadArticles = function loadArticles(query) {
-	    var xhr = new XMLHttpRequest();
+	    var xhr;
+	
+	    if (window.XDomainRequest) {
+	        xhr = new XDomainRequest();
+	    } else if (window.XMLHttpRequest) {
+	        xhr = new XMLHttpRequest();
+	    } else {
+	        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	
+	    console.log(xhr);
+	
 	    var url = constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey;
 	
 	    // start get request

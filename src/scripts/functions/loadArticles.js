@@ -9,7 +9,18 @@ let formattedDate   = year + '-' + month + '-' + day;
 
 
 const loadArticles = query => {
-    let xhr = new XMLHttpRequest();
+    var xhr;
+
+    if (window.XDomainRequest) {
+        xhr = new XDomainRequest()
+    } else if ( window.XMLHttpRequest ) {
+        xhr = new XMLHttpRequest();
+    } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    console.log(xhr)
+
     let url = constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey
 
     // start get request
