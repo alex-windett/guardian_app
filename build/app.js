@@ -69,7 +69,11 @@
 
 	'use strict';
 
-	var _loadArticles = __webpack_require__(6);
+	var _tabs = __webpack_require__(6);
+
+	var _tabs2 = _interopRequireDefault(_tabs);
+
+	var _loadArticles = __webpack_require__(7);
 
 	var _loadArticles2 = _interopRequireDefault(_loadArticles);
 
@@ -77,11 +81,39 @@
 
 /***/ },
 /* 6 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	function onTabClick(event) {
+	    event.preventDefault;
+	    var actives = document.querySelectorAll('.active');
+	
+	    // for all items that have an active class, remove it
+	    for (var i = 0; i < actives.length; i++) {
+	        actives[i].className = actives[i].className.replace('active', '');
+	    }
+	
+	    // actives.forEach( (active) =>
+	    //     console.log(active)
+	    // )
+	
+	    event.target.parentElement.className += ' active';
+	
+	    // Find the href attr and split on hash to get an id
+	    document.getElementById(event.target.href.split('#')[1]).className += ' active';
+	}
+	
+	var el = document.getElementById('nav-tab');
+	el.addEventListener('click', onTabClick, false);
+
+/***/ },
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _constants = __webpack_require__(7);
+	var _constants = __webpack_require__(8);
 	
 	var constants = _interopRequireWildcard(_constants);
 	
@@ -125,7 +157,7 @@
 	loadArticles('culture');
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	'use strict';

@@ -14,27 +14,21 @@
 		<main id="main" class="main">
 
 			<nav>
-				<ul>
-					<li class="hd zone-border zone-border-medium zone-sport nav-title">
-						<a href="sport"><h2 class="zone-color">sport</h2></a>
-					</li>
-					<li class="hd zone-border zone-border-medium zone-news nav-title">
-						<a href="new"><h2 class="zone-color">news</h2></a>
-					</li>
-					<li class="hd zone-border zone-border-medium zone-culture nav-title">
-						<a href="cultures"><h2 class="zone-color">cultures</h2></a>
-					</li>
-				</ul>
+				<ul id="nav-tab" class="nav">
+				   <li class="hd zone-border zone-border-medium zone-football active"><a href="#football">Football</a></li>
+				   <li class="hd zone-border zone-border-medium zone-news"><a href="#news">News</a></li>
+				   <li class="hd zone-border zone-border-medium zone-culture"><a href="#culture">Culture</a></li>
+				 </ul>
 			</nav>
 
-			<section>
-				<article>
+			<section class="tab__content">
+				<article class="tab__content--item active" id="football">
 					<ol id="football"></ol>
 				</article>
-				<article>
+				<article class="tab__content--item" id="news">
 					<ol id="news"></ol>
 				</article>
-				<article>
+				<article class="tab__content--item" id="culture">
 					<ol id="culture"></ol>
 				</article>
 			</section>

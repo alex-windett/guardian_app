@@ -2,4 +2,9 @@
   max-width: 500px;
   margin: 0 auto; }
 
+.tab__content--item {
+  display: none; }
+  .tab__content--item.active {
+    display: block; }
+
 /*# sourceMappingURL=app.css.map*/
