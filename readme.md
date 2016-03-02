@@ -6,4 +6,4 @@ It uses javascript to make ajax calls to the Guardian's API, however it contains
 
 Sections of the the Guardian's base css has been used as well as some of my own.
 
-It has been test on IE9+, Chrome, Safari, Firefox and modern IOS devices 
+It has been test on IE10+, Chrome, Safari, Firefox and modern IOS devices. Issue accessing data via XDomainRequest() on IE9.
