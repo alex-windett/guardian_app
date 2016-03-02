@@ -77,9 +77,64 @@
 
 /***/ },
 /* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _constants = __webpack_require__(7);
+	
+	var constants = _interopRequireWildcard(_constants);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var today = new Date();
+	var previousWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+	var day = previousWeek.getDate();
+	var month = previousWeek.getMonth();
+	var year = previousWeek.getFullYear();
+	var formattedDate = year + '-' + month + '-' + day;
+	
+	var loadArticles = function loadArticles(query) {
+	    var xhr = new XMLHttpRequest();
+	
+	    xhr.open('GET', encodeURI(constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey));
+	
+	    xhr.onload = function () {
+	        if (xhr.status === 200) {
+	            var data = JSON.parse(xhr.responseText);
+	            var results = data.response.results;
+	
+	            var list = '';
+	
+	            results.map(function (result) {
+	                return list += '<li> <a href=' + result.webUrl + '>' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>';
+	            }
+	            // console.log(result)
+	            );
+	
+	            document.getElementById(query).innerHTML = list;
+	        } else {
+	            console.log('Request failed.  Returned status of ' + xhr.status);
+	        }
+	    };
+	    xhr.send();
+	};
+	
+	loadArticles('football');
+	loadArticles('news');
+	loadArticles('culture');
+
+/***/ },
+/* 7 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var apiKey = exports.apiKey = '9wur7sdh84azzazdt3ye54k4';
+	var apiURL = exports.apiURL = 'http://content.guardianapis.com/';
 
 /***/ }
 /******/ ]);
