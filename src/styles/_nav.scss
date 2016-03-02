@@ -1,0 +1,14 @@
+.nav {
+    li {
+        width: 29.5%;
+        display: inline-block;
+
+        &.active {
+            background: white;
+        }
+    }
+
+    a {
+        display: block;
+    }
+}

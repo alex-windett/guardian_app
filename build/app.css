@@ -1,10 +1,31 @@
+.wrapper {
+  padding: 0 0 30px; }
+
 .main {
   max-width: 500px;
   margin: 0 auto; }
 
-.tab__content--item {
+.tab__content--section {
   display: none; }
-  .tab__content--item.active {
+  .tab__content--section.active {
     display: block; }
+
+.tab__content--item {
+  border-bottom: 1px solid grey;
+  margin-top: 10px; }
+  .tab__content--item:last-child {
+    border-bottom: none; }
+  @media only screen and (max-width: 500px) {
+    .tab__content--item {
+      margin-right: 20px; } }
+
+.nav li {
+  width: 29.5%;
+  display: inline-block; }
+  .nav li.active {
+    background: white; }
+
+.nav a {
+  display: block; }
 
 /*# sourceMappingURL=app.css.map*/

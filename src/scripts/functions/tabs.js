@@ -1,5 +1,5 @@
 function onTabClick(event) {
-    event.preventDefault
+    event.preventDefault()
     let actives = document.querySelectorAll('.active');
 
     // for all items that have an active class, remove it

@@ -10,22 +10,27 @@ let formattedDate   = year + '-' + month + '-' + day;
 
 const loadArticles = query => {
     let xhr = new XMLHttpRequest();
+    let url = constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey
 
-    xhr.open('GET', encodeURI(constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey) );
+    // start get request
+    xhr.open('GET', encodeURI(url) );
 
     xhr.onload = function() {
         if (xhr.status === 200) {
             const data    = JSON.parse(xhr.responseText);
             const results = data.response.results;
 
+            // Create an empty list
             let list = '';
 
+            // for each of the ajax respsonses loop over and create a list item
+            // add that item to the list variable
             results.map( (result) =>
-                list += '<li> <a href=' + result.webUrl + '>' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>'
-                // console.log(result)
+                list += '<li class="tab__content--item"> <a href=' + result.webUrl + '>' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>'
             )
 
-            document.getElementById(query).innerHTML = list
+            // Set the HTML
+            document.getElementById(query).innerHTML = '<ol>' + list +'</ol>'
         }
         else {
             console.log('Request failed.  Returned status of ' + xhr.status);

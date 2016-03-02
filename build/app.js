@@ -86,7 +86,7 @@
 	'use strict';
 	
 	function onTabClick(event) {
-	    event.preventDefault;
+	    event.preventDefault();
 	    var actives = document.querySelectorAll('.active');
 	
 	    // for all items that have an active class, remove it
@@ -128,23 +128,27 @@
 	
 	var loadArticles = function loadArticles(query) {
 	    var xhr = new XMLHttpRequest();
+	    var url = constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey;
 	
-	    xhr.open('GET', encodeURI(constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey));
+	    // start get request
+	    xhr.open('GET', encodeURI(url));
 	
 	    xhr.onload = function () {
 	        if (xhr.status === 200) {
 	            var data = JSON.parse(xhr.responseText);
 	            var results = data.response.results;
 	
+	            // Create an empty list
 	            var list = '';
 	
+	            // for each of the ajax respsonses loop over and create a list item
+	            // add that item to the list variable
 	            results.map(function (result) {
-	                return list += '<li> <a href=' + result.webUrl + '>' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>';
-	            }
-	            // console.log(result)
-	            );
+	                return list += '<li class="tab__content--item"> <a href=' + result.webUrl + '>' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>';
+	            });
 	
-	            document.getElementById(query).innerHTML = list;
+	            // Set the HTML
+	            document.getElementById(query).innerHTML = '<ol>' + list + '</ol>';
 	        } else {
 	            console.log('Request failed.  Returned status of ' + xhr.status);
 	        }
