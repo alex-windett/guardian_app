@@ -1,7 +1,6 @@
 const autoprefixer = require('autoprefixer')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path')
-const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 const sassLoaders = [
     'css-loader',
@@ -56,7 +55,6 @@ const config = {
     watch: true,
     plugins: [
         new ExtractTextPlugin('[name].css'),
-        new LiveReloadPlugin()
     ],
     postcss: [
         autoprefixer({
