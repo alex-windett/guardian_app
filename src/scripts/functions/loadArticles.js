@@ -1,11 +1,11 @@
 import * as constants from '../constants';
 
-let today           = new Date()
-let previousWeek    = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000)
-let day             = previousWeek.getDate();
-let month           = previousWeek.getMonth();
-let year            = previousWeek.getFullYear();
-let formattedDate   = year + '-' + month + '-' + day;
+const today           = new Date()
+const previousWeek    = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000)
+const day             = previousWeek.getDate();
+const month           = previousWeek.getMonth();
+const year            = previousWeek.getFullYear();
+const formattedDate   = year + '-' + month + '-' + day;
 
 
 const loadArticles = query => {
