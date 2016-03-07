@@ -139,7 +139,7 @@
 	
 	    console.log(xhr);
 	
-	    var url = constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey;
+	    var url = '' + constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey;
 	
 	    // start get request
 	    xhr.open('GET', encodeURI(url));
@@ -155,11 +155,11 @@
 	            // for each of the ajax respsonses loop over and create a list item
 	            // add that item to the list variable
 	            results.map(function (result) {
-	                return list += '<li class="tab__content--item"> <a href=' + result.webUrl + '>' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>';
+	                return list += '<li class="tab__content--item"> <a href="' + result.webUrl + '"> ' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>';
 	            });
 	
 	            // Set the HTML
-	            document.getElementById(query).innerHTML = '<ol>' + list + '</ol>';
+	            document.getElementById(query).innerHTML = '<ol> ' + list + ' </ol>';
 	        } else {
 	            console.log('Request failed.  Returned status of ' + xhr.status);
 	        }

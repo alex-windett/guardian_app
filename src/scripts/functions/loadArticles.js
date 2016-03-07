@@ -5,7 +5,7 @@ const previousWeek    = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000)
 const day             = previousWeek.getDate();
 const month           = previousWeek.getMonth();
 const year            = previousWeek.getFullYear();
-const formattedDate   = year + '-' + month + '-' + day;
+const formattedDate   = `${year}-${month}-${day}`;
 
 
 const loadArticles = query => {
@@ -21,7 +21,7 @@ const loadArticles = query => {
 
     console.log(xhr)
 
-    let url = constants.apiURL + query + '?q=&show-fields=trail-text&from-date=' + formattedDate + '&api-key=' + constants.apiKey
+    let url = `${constants.apiURL}${query}?q=&show-fields=trail-text&from-date=${formattedDate}&api-key=${constants.apiKey}`
 
     // start get request
     xhr.open('GET', encodeURI(url) );
@@ -37,11 +37,11 @@ const loadArticles = query => {
             // for each of the ajax respsonses loop over and create a list item
             // add that item to the list variable
             results.map( (result) =>
-                list += '<li class="tab__content--item"> <a href=' + result.webUrl + '>' + result.webTitle + '</a> <p>' + result.fields.trailText + '</p> </li>'
+                list += `<li class="tab__content--item"> <a href="${result.webUrl}"> ${result.webTitle}</a> <p>${result.fields.trailText}</p> </li>`
             )
 
             // Set the HTML
-            document.getElementById(query).innerHTML = '<ol>' + list +'</ol>'
+            document.getElementById(query).innerHTML = `<ol> ${list} </ol>`
         }
         else {
             console.log('Request failed.  Returned status of ' + xhr.status);
